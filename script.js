@@ -32,7 +32,7 @@ let totalAPagar = 0
 
 //Funciones con menu de opciones
 function menuPrincipal(opcion){
-    opcion = Number(prompt("Bienvenidos a mi tienda Gamer seleccione la opcion deceada\n1-Listar productos\n2-Ver informacion de un producto en particular\n3-Agregar un producto al carrito\n4-Filtrar por categoria\n5-Ordenar productos por nombre Ascendente\n6-Ordenar productos por nombre Descendente\n7-Ordenar productos por precio Ascendente\n8-Ordenar porductos por precio descendente\n9-Mostrar carrito\n10-Salir"))
+    opcion = Number(prompt("Bienvenidos a mi tienda Gamer seleccione la opcion deseada\n1-Listar productos\n2-Ver informacion de un producto en particular\n3-Agregar un producto al carrito\n4-Filtrar por categoria\n5-Ordenar productos por nombre Ascendente\n6-Ordenar productos por nombre Descendente\n7-Ordenar productos por precio Ascendente\n8-Ordenar porductos por precio descendente\n9-Mostrar carrito\n10-Salir"))
     return opcion
 }
 
@@ -114,7 +114,7 @@ do{
         case 2:
             switch(informacionParticular()){
                 case 1:
-                    idIngresado = Number(prompt("Ingrese el id que decea buscar"))
+                    idIngresado = Number(prompt("Ingrese el id que desea buscar"))
                     productoBuscado = buscarProductoPorId(productos,idIngresado)
                     if(productoBuscado){
                         alert(mostrarProducto(productoBuscado))
@@ -123,7 +123,7 @@ do{
                     }   
                 break;
                 case 2:
-                    nombreIngresado = prompt("Ingrese el nombre que decea buscar")
+                    nombreIngresado = prompt("Ingrese el nombre que desea buscar")
                     productoBuscado = buscarProductoPorNombre(productos,nombreIngresado)
                     if(productoBuscado){
                         alert(mostrarProducto(productoBuscado))
@@ -137,7 +137,7 @@ do{
             }
         break;
         case 3:
-            idIngresado = Number(prompt(listarProductos(productos) + "\n Ingrese el id del producto que decea agregar al carrito:"))
+            idIngresado = Number(prompt(listarProductos(productos) + "\n Ingrese el id del producto que desea agregar al carrito:"))
             productoBuscado = buscarProductoPorId(productos,idIngresado)
             productoAgregado = buscarProductoPorId(carrito,idIngresado)
             if(!productoBuscado){
@@ -156,6 +156,7 @@ do{
                     })
                 }
                 productoBuscado.stock--
+                alert("Producto agregado exitosamente!")
             }else{
                 alert("No hay stock de ese producto")
             }
@@ -205,6 +206,7 @@ do{
                         totalAPagar = carrito.reduce((acumulador,producto) => acumulador + producto.precio,0)
                         alert("Debes abonar un total de: $" + totalAPagar)
                         alert("Gracias por vicitar mi tienda!!")
+                        salir = true
                     break;
                     case 2:
                         alert("Regresando a la tienda")
